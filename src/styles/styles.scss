@@ -1,0 +1,200 @@
+@import 'variables';
+@import 'mixins';
+
+// NotificationSystem component
+.notifications-system {
+}
+
+// NotificationContainer component
+:local .notifications-container {
+    position: fixed;
+    z-index:  99999;
+}
+
+// on extra small screens, notifications container is on top and
+// take all width of the screen
+// And notification animation : slide top to bottom
+@media (max-width: #{$screen-xs-max}) {
+    :local .notifications-container {
+        width: 100%;
+        top:   0;
+        left:  0;
+        @include notification-animation('top');
+    }
+}
+
+// on small to large screens, container position and notification animation is
+// different depending on container position (from left to right or from right to left)
+@media (min-width: #{$screen-sm-min}) {
+    :local .notifications-container {
+        max-width: $notification-max-width;
+        width:     40%;
+
+        &--tr {
+            top:   20px;
+            right: 20px;
+            @include notification-animation('right');
+        }
+        &--tl {
+            top:  20px;
+            left: 20px;
+            @include notification-animation('left');
+        }
+        &--br {
+            bottom: 0;
+            right:  20px;
+            @include notification-animation('right');
+        }
+        &--bl {
+            bottom: 0;
+            left:   20px;
+            @include notification-animation('left');
+        }
+    }
+}
+
+// Notification component
+.notification {
+    display:    table;
+    width:      100%;
+    height:     100%;
+    min-height: 40px;
+    position:   relative;
+    border:     none;
+    z-index:    999;
+    border-radius: 5px;
+
+    &-image-container {
+        display:    table-cell;
+        box-sizing: border-box;
+        padding:    10px 0 10px 15px;
+    }
+    &-image {
+        display:         inline-block;
+        vertical-align:  top;
+        border-radius:   32px;
+        width:           32px;
+        height:          32px;
+        background-size: cover;
+    }
+    &-icon {
+        display:     table-cell;
+        box-sizing:  border-box;
+        padding:     10px 0 10px 15px;
+        // override font-size of `fa` class
+        font-size:   20px !important;
+    }
+    &-meta {
+        display:        table-cell;
+        vertical-align: top;
+        box-sizing:     border-box;
+        width:          100%;
+        padding:        10px 20px;
+    }
+    // global style for buttons
+    &-buttons {
+        display:        table-cell;
+        box-sizing:     border-box;
+        height:         100%;
+        vertical-align: top;
+
+        .notification-button {
+            min-height:  40px;
+            box-sizing:  border-box;
+            padding:     0;
+            background:  white;
+            outline:     none;
+            text-align:  center;
+            cursor:      pointer;
+
+            &-text {
+                display:       block;
+                height:        25px;
+                // width of a button with 10px of padding
+                width:         70px;
+                white-space:   nowrap;
+                overflow:      hidden;
+                margin:        0 auto;
+                text-overflow: ellipsis;
+                text-align:    center;
+                font-size:     14px;
+                line-height:   25px;
+            }
+        }
+    }
+    &-title {
+        margin:      0 0 10px;
+        font-size:   15px;
+        font-weight: 700;
+    }
+    &-message {
+        margin: 0;
+    }
+    &--dismissible {
+        cursor: pointer;
+    }
+    // color variants
+    &--default {
+        @include notification-variant($notification-default-bg, $notification-default-border, $notification-default-color, '');
+    }
+    &--success {
+        @include notification-variant($notification-success-bg, $notification-success-border, $notification-success-color, $notification-success-icon);
+    }
+    &--info {
+        @include notification-variant($notification-info-bg, $notification-info-border, $notification-info-color, $notification-info-icon);
+    }
+    &--warning {
+        @include notification-variant($notification-warning-bg, $notification-warning-border, $notification-warning-color, $notification-warning-icon);
+    }
+    &--error {
+        @include notification-variant($notification-error-bg, $notification-error-border, $notification-error-color, $notification-error-icon);
+    }
+    // change size of buttons and meta div
+    // for small to large screen
+    @media (min-width: #{$screen-sm-min}) {
+        margin-bottom: 20px;
+
+        &--buttons-1 .notification-button {
+            height: 100%;
+        }
+        &--buttons-2 .notification-button {
+            height: 50%;
+        }
+        &-buttons {
+            width: $notification-button-width;
+
+            .notification-button {
+                display: block;
+                width:   $notification-button-width;
+
+                &:nth-child(2) {
+                    border-top: 1px solid rgba(0, 0, 0, 0.09);
+                }
+            }
+        }
+    }
+    // change size of buttons and meta div
+    // for extra small screen
+    @media (max-width: #{$screen-xs-max}) {
+        &--buttons-1 {
+            .notification-buttons {
+                width: $notification-button-width;
+            }
+        }
+        &--buttons-2 {
+            .notification-meta {
+                width: calc(100% - #{$notification-button-width} * 2)
+            }
+            .notification-buttons {
+                width: calc(#{$notification-button-width} * 2);
+            }
+        }
+        &-buttons {
+            .notification-button {
+                float:  left;
+                width:  $notification-button-width;
+                height: 100%;
+            }
+        }
+    }
+}

@@ -1,0 +1,32 @@
+// Media queries breakpoints
+$screen-sm-min: 768px;
+$screen-md-min: 992px;
+$screen-xs-max: ($screen-sm-min - 1);
+
+// Notification variables
+$notification-max-width: 360px;
+$notification-button-width: 90px;
+
+$notification-success-bg: #dff0d8;
+$notification-success-border: #d6e9c6;
+$notification-success-color: #3c763d;
+$notification-success-icon: "\e089";
+
+$notification-default-bg: #f9f9f9;
+$notification-default-border: #ddd;
+$notification-default-color: inherit;
+
+$notification-info-bg: #d9edf7;
+$notification-info-border: #bce8f1;
+$notification-info-color: #31708f;
+$notification-info-icon: "\e086";
+
+$notification-warning-bg: #fcf8e3;
+$notification-warning-border: #faebcc;
+$notification-warning-color: #8a6d3b;
+$notification-warning-icon: "\e107";
+
+$notification-error-bg: #f2dede;
+$notification-error-border: #ebccd1;
+$notification-error-color: #a94442;
+$notification-error-icon: "\e088";

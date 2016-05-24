@@ -1,0 +1,68 @@
+@mixin box-shadow($shadow...) {
+    -webkit-box-shadow: $shadow;
+    box-shadow:         $shadow;
+}
+
+@mixin notification-variant($background, $border-color, $color, $icon) {
+    background-color: $background;
+    border:     1px solid #{$border-color};
+    color:            $color;
+
+    .notification-button {
+        background:  $background;
+        border:      none;
+        border-left: 1px solid #{$border-color};
+        color:       $color;
+
+        &:hover {
+            color: $color;
+        }
+        &:active {
+            color: $color;
+        }
+    }
+
+    @if $icon != '' {
+        .notification-icon:before {
+            content: $icon;
+            color:   $color;
+        }
+    } @else {
+        .notification-icon {
+            display: none;
+        }
+    }
+}
+
+@mixin notification-animation($direction) {
+    .notification {
+        position:      relative;
+        transition:    opacity .4s, #{$direction} .4s;
+        // Animations
+        // enter animation (start)
+        &-enter,
+        &-appear {
+            opacity:       0.01;
+            #{$direction}: -#{$notification-max-width};
+
+            // enter animation (end)
+            &.notification-enter-active,
+            &.notification-appear-active {
+                #{$direction}: 0;
+                opacity:       1;
+            }
+        }
+        // leave animation (start)
+        &-leave {
+            opacity:       1;
+            #{$direction}: 0;
+
+            // leave animation (end)
+            &.notification-leave-active {
+                opacity:       0.01;
+                #{$direction}: -#{$notification-max-width};
+            }
+
+        }
+    }
+}
