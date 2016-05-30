@@ -19,9 +19,9 @@ var notificationsContainerClassName = {
 
 // default transition for Notification component
 var notificationsContainerTransition = {
-  appearTimeout: 1000,
-  enterTimeout: 1000,
-  leaveTimeout: 1000,
+  appearTimeout: 450,
+  enterTimeout: 450,
+  leaveTimeout: 450,
   name: {
     appear: css['notification-appear'],
     appearActive: css['notification-appear-active'],
