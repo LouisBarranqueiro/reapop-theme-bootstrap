@@ -62,7 +62,6 @@
     position:   relative;
     border:     none;
     z-index:    999;
-    border-radius: 5px;
 
     &-image-container {
         display:    table-cell;
@@ -78,11 +77,11 @@
         background-size: cover;
     }
     &-icon {
-        display:     table-cell;
-        box-sizing:  border-box;
-        padding:     10px 0 10px 15px;
+        display:    table-cell;
+        box-sizing: border-box;
+        padding:    10px 0 10px 15px;
         // override font-size of `fa` class
-        font-size:   20px !important;
+        font-size:  20px !important;
     }
     &-meta {
         display:        table-cell;
@@ -99,13 +98,13 @@
         vertical-align: top;
 
         .notification-button {
-            min-height:  40px;
-            box-sizing:  border-box;
-            padding:     0;
-            background:  white;
-            outline:     none;
-            text-align:  center;
-            cursor:      pointer;
+            min-height: 40px;
+            box-sizing: border-box;
+            padding:    0;
+            background: none;
+            outline:    none;
+            text-align: center;
+            cursor:     pointer;
 
             &-text {
                 display:       block;
@@ -153,6 +152,7 @@
     // for small to large screen
     @media (min-width: #{$screen-sm-min}) {
         margin-bottom: 20px;
+        border-radius: 5px;
 
         &--buttons-1 .notification-button {
             height: 100%;
@@ -176,6 +176,8 @@
     // change size of buttons and meta div
     // for extra small screen
     @media (max-width: #{$screen-xs-max}) {
+        border-radius: 0;
+        margin-bottom: -1px;
         &--buttons-1 {
             .notification-buttons {
                 width: $notification-button-width;
