@@ -38,7 +38,7 @@ var notificationClassName = {
   meta: css['notification-meta'],
   title: css['notification-title'],
   message: css['notification-message'],
-  icon: 'glyphicon ' + css['notification-icon'],
+  icon: 'fa ' + css['notification-icon'],
   imageContainer: css['notification-image-container'],
   image: css['notification-image'],
   status: function status(_status) {
