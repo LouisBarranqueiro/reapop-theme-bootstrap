@@ -56,17 +56,44 @@ module.exports = {
 };
 ```
 
+### Install Font Awesome and Bootstrap
+
+This theme doesn't include bootstrap and Font Awesome to let you install them the way you want:
+
+#### With Webpack
+
+1. Install Bootstrap with `npm install bootstrap --save`
+2. Install Font Awesome with `npm install font-awesome --save` 
+
+and import them in your app. Example :
+
+```
+import '!style-loader!css-loader!bootstrap/dist/css/bootstrap.min.css';
+import '!style-loader!css-loader!font-awesome/css/font-awesome.min.css';
+```
+
+#### With BootstrapCDN
+
+Add this line in `<head>` of your main `index.html` file :
+``` html 
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet"
+```
+
 ### Set the theme
 
 ``` js
 import React, {Component} from 'react';
 import NotificationsSystem from 'reapop';
-// 1. import theme
+// 1. import Bootstrap and Font Awesome
+import '!style-loader!css-loader!bootstrap/dist/css/bootstrap.min.css';
+import '!style-loader!css-loader!font-awesome/css/font-awesome.min.css';
+// 2. import reapop theme
 import theme from 'reapop-theme-bootstrap';
-// 
+
 class ATopLevelComponent extends Component {
   render() { 
-   // 2. set `theme` prop
+   // 3. set `theme` prop
     return (
       <div>
         <NotificationsSystem theme={theme}/>
