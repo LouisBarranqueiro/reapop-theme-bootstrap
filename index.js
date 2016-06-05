@@ -33,11 +33,11 @@ var notificationsContainerTransition = {
 
 // default className for Notification component
 var notificationClassName = {
-  main: css['notification'],
+  main: 'alert ' + css['notification'],
   meta: css['notification-meta'],
   title: css['notification-title'],
   message: css['notification-message'],
-  icon: 'fa ' + css['notification-icon'],
+  icon: css['notification-icon'],
   imageContainer: css['notification-image-container'],
   image: css['notification-image'],
   status: function status(_status) {

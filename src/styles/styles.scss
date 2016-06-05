@@ -54,7 +54,7 @@
 }
 
 // Notification component
-.notification {
+:local .notification {
     display:    table;
     width:      100%;
     height:     100%;
@@ -62,34 +62,52 @@
     position:   relative;
     border:     none;
     z-index:    999;
+    padding:    0;
 
     &-image-container {
         display:    table-cell;
         box-sizing: border-box;
-        padding:    10px 0 10px 15px;
+        padding:    15px 0 15px 15px;
     }
     &-image {
         display:         inline-block;
         vertical-align:  top;
-        border-radius:   32px;
-        width:           32px;
-        height:          32px;
+        border-radius:   40px;
+        width:           40px;
+        height:          40px;
         background-size: cover;
     }
     &-icon {
-        display:    table-cell;
-        box-sizing: border-box;
-        padding:    10px 0 10px 15px;
-        // override font-size of `fa` class
-        font-size:  20px !important;
+        display: none;
     }
     &-meta {
         display:        table-cell;
         vertical-align: top;
         box-sizing:     border-box;
         width:          100%;
-        padding:        10px 20px;
+        padding:        15px;
     }
+    &-close-button-container {
+        display:    table-cell;
+        // Ajust close button position
+        padding:    9px 15px;
+        box-sizing: border-box;
+    }
+    &-close-button {
+        font-size:   21px;
+        font-weight: bold;
+        text-shadow: #fff 0 1px 0;
+        opacity:     0.2;
+        cursor:      pointer;
+
+        &:before {
+            content: $notification-close-button;
+        }
+        &:hover {
+            opacity: 0.8;
+        }
+    }
+
     // global style for buttons
     &-buttons {
         display:        table-cell;
@@ -134,19 +152,19 @@
     }
     // color variants
     &--default {
-        @include notification-variant($notification-default-bg, $notification-default-border, $notification-default-color, '');
+        @include notification-variant($notification-default-bg, $notification-default-border, $notification-default-color);
     }
     &--success {
-        @include notification-variant($notification-success-bg, $notification-success-border, $notification-success-color, $notification-success-icon);
+        @include notification-variant($notification-success-bg, $notification-success-border, $notification-success-color);
     }
     &--info {
-        @include notification-variant($notification-info-bg, $notification-info-border, $notification-info-color, $notification-info-icon);
+        @include notification-variant($notification-info-bg, $notification-info-border, $notification-info-color);
     }
     &--warning {
-        @include notification-variant($notification-warning-bg, $notification-warning-border, $notification-warning-color, $notification-warning-icon);
+        @include notification-variant($notification-warning-bg, $notification-warning-border, $notification-warning-color);
     }
     &--error {
-        @include notification-variant($notification-error-bg, $notification-error-border, $notification-error-color, $notification-error-icon);
+        @include notification-variant($notification-error-bg, $notification-error-border, $notification-error-color);
     }
     // change size of buttons and meta div
     // for small to large screen

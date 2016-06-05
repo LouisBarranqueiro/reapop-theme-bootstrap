@@ -3,41 +3,28 @@
     box-shadow:         $shadow;
 }
 
-@mixin notification-variant($background, $border-color, $color, $icon) {
+@mixin notification-variant($background, $border-color, $color) {
     background-color: $background;
-    border:     1px solid #{$border-color};
+    border:           1px solid #{$border-color};
     color:            $color;
 
     .notification-button {
-        background:  $background;
+        background:  transparent;
         border:      none;
         border-left: 1px solid #{$border-color};
         color:       $color;
 
-        &:hover {
-            color: $color;
-        }
+        &:hover,
         &:active {
-            color: $color;
-        }
-    }
-
-    @if $icon != '' {
-        .notification-icon:before {
-            content: $icon;
-            color:   $color;
-        }
-    } @else {
-        .notification-icon {
-            display: none;
+            color: darken($color, 20%);
         }
     }
 }
 
 @mixin notification-animation($direction) {
     .notification {
-        position:      relative;
-        transition:    opacity .4s, #{$direction} .4s;
+        position:   relative;
+        transition: opacity .4s, #{$direction} .4s;
         // Animations
         // enter animation (start)
         &-enter,
