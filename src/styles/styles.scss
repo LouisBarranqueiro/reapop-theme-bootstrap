@@ -11,48 +11,122 @@
     z-index:  99999;
 }
 
-// on extra small screens, notifications container is on top and
-// take all width of the screen
-// And notification animation : slide top to bottom
-@media (max-width: #{$screen-xs-max}) {
-    :local .notifications-container {
-        width: 100%;
-        top:   0;
-        left:  0;
+// for small to large screens, container position and notification animation is
+// different depending on container position
+:local .notifications-container {
+    // change style of buttons depending of the notification position
+    &--tc,
+    &--tr,
+    &--tl,
+    &--bc,
+    &--br,
+    &--bl {
+        width: $notification-max-width;
+        .notification {
+            &--buttons-1 .notification-button {
+                height: 100%;
+            }
+            &--buttons-2 .notification-button {
+                height: 50%;
+            }
+            &-buttons {
+                width: $notification-button-width;
+
+                .notification-button {
+                    display: block;
+                    width:   $notification-button-width;
+                }
+            }
+        }
+    }
+    &--b,
+    &--t {
+        .notification {
+            &--buttons-1 {
+                .notification-buttons {
+                    width: $notification-button-width;
+                }
+            }
+            &--buttons-2 {
+                .notification-meta {
+                    width: calc(100% - #{$notification-button-width} * 2)
+                }
+                .notification-buttons {
+                    width: calc(#{$notification-button-width} * 2);
+                }
+            }
+            &-buttons {
+                .notification-button {
+                    float:  left;
+                    width:  $notification-button-width;
+                    height: 100%;
+                }
+            }
+        }
+    }
+
+    // animations depending of the notification position
+    &--t {
+        width: calc(100% - 40px);
+        top:   20px;
+        left:  20px;
         @include notification-animation('top');
     }
-}
-
-// on small to large screens, container position and notification animation is
-// different depending on container position (from left to right or from right to left)
-@media (min-width: #{$screen-sm-min}) {
-    :local .notifications-container {
-        max-width: $notification-max-width;
-        width:     40%;
-
-        &--tr {
-            top:   20px;
-            right: 20px;
-            @include notification-animation('right');
-        }
-        &--tl {
-            top:  20px;
-            left: 20px;
-            @include notification-animation('left');
-        }
-        &--br {
-            bottom: 0;
-            right:  20px;
-            @include notification-animation('right');
-        }
-        &--bl {
-            bottom: 0;
-            left:   20px;
-            @include notification-animation('left');
-        }
+    &--tc {
+        top:       20px;
+        left:      50%;
+        transform: translateX(-50%);
+        @include notification-animation('top');
+    }
+    &--tr {
+        top:   20px;
+        right: 20px;
+        @include notification-animation('right');
+    }
+    &--tl {
+        top:  20px;
+        left: 20px;
+        @include notification-animation('left');
+    }
+    &--b {
+        width:  calc(100% - 40px);
+        bottom: 0;
+        left:   20px;
+        @include notification-animation('bottom');
+    }
+    &--bc {
+        bottom:    0;
+        left:      50%;
+        transform: translateX(-50%);
+        @include notification-animation('bottom');
+    }
+    &--br {
+        bottom: 0;
+        right:  20px;
+        @include notification-animation('right');
+    }
+    &--bl {
+        bottom: 0;
+        left:   20px;
+        @include notification-animation('left');
     }
 }
 
+// put all notifications at the top of the screen
+@media (max-width: #{$screen-xs-max}) {
+    :local .notifications-container {
+        &--t {
+            width: 100%;
+            top:   0;
+            left:  0;
+            @include notification-animation('top');
+
+            .notification {
+                margin: 0;
+            }
+        }
+    }
+}
 // Notification component
 :local .notification {
     display:    table;
@@ -165,56 +239,5 @@
     }
     &--error {
         @include notification-variant($notification-error-bg, $notification-error-border, $notification-error-color);
-    }
-    // change size of buttons and meta div
-    // for small to large screen
-    @media (min-width: #{$screen-sm-min}) {
-        margin-bottom: 20px;
-        border-radius: 5px;
-
-        &--buttons-1 .notification-button {
-            height: 100%;
-        }
-        &--buttons-2 .notification-button {
-            height: 50%;
-        }
-        &-buttons {
-            width: $notification-button-width;
-
-            .notification-button {
-                display: block;
-                width:   $notification-button-width;
-
-                &:nth-child(2) {
-                    border-top: 1px solid rgba(0, 0, 0, 0.09);
-                }
-            }
-        }
-    }
-    // change size of buttons and meta div
-    // for extra small screen
-    @media (max-width: #{$screen-xs-max}) {
-        border-radius: 0;
-        margin-bottom: -1px;
-        &--buttons-1 {
-            .notification-buttons {
-                width: $notification-button-width;
-            }
-        }
-        &--buttons-2 {
-            .notification-meta {
-                width: calc(100% - #{$notification-button-width} * 2)
-            }
-            .notification-buttons {
-                width: calc(#{$notification-button-width} * 2);
-            }
-        }
-        &-buttons {
-            .notification-button {
-                float:  left;
-                width:  $notification-button-width;
-                height: 100%;
-            }
-        }
     }
 }
