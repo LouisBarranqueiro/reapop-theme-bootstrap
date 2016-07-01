@@ -25,6 +25,8 @@ You have to define some loaders to handle files of theme. If it's not already th
  - **style-loader** with `npm install style-loader --save-dev`
  - **css-loader** with `npm install css-loader --save-dev`
  - **sass-loader** with `npm install sass-loader --save-dev`
+ - **url-loader** with `npm install url-loader --save-dev`
+ - **file-loader** with `npm install file-loader --save-dev`
 
 Look at this example, you can use it in for your project. Check out configuration of [Reapop Demo](https://github.com/LouisBarranqueiro/reapop) to see a complete example.
 
@@ -43,6 +45,12 @@ module.exports = {
     loaders: [{
       test: /\.scss$/,
       loaders: ['style', CSSLoader, 'sass']
+    }, {
+      test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+      loader: "url-loader?limit=10000&minetype=application/font-woff"
+    }, {
+      test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+      loader: "file-loader"
     }]
   }
 };
@@ -66,7 +74,7 @@ import '!style-loader!css-loader!font-awesome/css/font-awesome.min.css';
 
 #### With BootstrapCDN
 
-Add this line in `<head>` of your main `index.html` file :
+Add these lines in `<head>` of your main `index.html` file :
 ``` html 
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet"
@@ -101,4 +109,4 @@ Follow this guide : [Reapop - Customize or create a theme](https://github.com/Lo
 
 ## License 
 
-Reapop-theme-bootstrap is under [GPL-3.0 License](https://github.com/LouisBarranqueiro/reapop/blob/master/LICENSE)
+Reapop-theme-bootstrap is under [GPL-3.0 License](https://github.com/LouisBarranqueiro/reapop-theme-bootstrap/blob/master/LICENSE)
