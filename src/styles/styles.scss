@@ -1,6 +1,27 @@
 @import 'variables';
 @import 'mixins';
 
+// include all needed keyframes
+@include notification-keyframes('top');
+@include notification-keyframes('bottom');
+@include notification-keyframes('left');
+@include notification-keyframes('right');
+@include notification-keyframes('top', 0);
+
+// rotating animation for loading status
+@keyframes :local(rotating) {
+    from {
+        transform:         rotate(0deg);
+        -webkit-transform: rotate(0deg);
+        -moz-transform:    rotate(0deg);
+    }
+    to {
+        transform:         rotate(360deg);
+        -webkit-transform: rotate(360deg);
+        -moz-transform:    rotate(360deg);
+    }
+}
+
 // NotificationSystem component
 .notifications-system {
 }
@@ -35,6 +56,10 @@
                 .notification-button {
                     display: block;
                     width:   $notification-button-width;
+
+                    &:nth-child(2) {
+                        border-top: 1px solid rgba(0, 0, 0, 0.09);
+                    }
                 }
             }
         }
@@ -68,30 +93,30 @@
     // animations depending of the notification position
     &--t {
         width: calc(100% - 40px);
-        top:   20px;
-        left:  20px;
+        top:   $window-padding;
+        left:  $window-padding;
         @include notification-animation('top');
     }
     &--tc {
-        top:       20px;
+        top:       $window-padding;
         left:      50%;
         transform: translateX(-50%);
         @include notification-animation('top');
     }
     &--tr {
-        top:   20px;
-        right: 20px;
+        top:   $window-padding;
+        right: $window-padding;
         @include notification-animation('right');
     }
     &--tl {
-        top:  20px;
-        left: 20px;
+        top:  $window-padding;
+        left: $window-padding;
         @include notification-animation('left');
     }
     &--b {
         width:  calc(100% - 40px);
         bottom: 0;
-        left:   20px;
+        left:   $window-padding;
         @include notification-animation('bottom');
     }
     &--bc {
@@ -102,12 +127,12 @@
     }
     &--br {
         bottom: 0;
-        right:  20px;
+        right:  $window-padding;
         @include notification-animation('right');
     }
     &--bl {
         bottom: 0;
-        left:   20px;
+        left:   $window-padding;
         @include notification-animation('left');
     }
 }
@@ -119,15 +144,16 @@
             width: 100%;
             top:   0;
             left:  0;
-            @include notification-animation('top');
+            @include notification-animation('top', 0);
 
-            .notification {
-                margin: 0;
+            .notification-wrapper {
+                margin:        0;
                 border-radius: 0;
             }
         }
     }
 }
+
 // Notification component
 :local .notification {
     display:    table;
@@ -138,7 +164,14 @@
     border:     none;
     z-index:    999;
     padding:    0;
+    transition: all .4s ease;
 
+    &-wrapper {
+        display:       block;
+        width:         100%;
+        height:        100%;
+        margin-bottom: $window-padding;
+    }
     &-image-container {
         display:    table-cell;
         box-sizing: border-box;
@@ -153,14 +186,18 @@
         background-size: cover;
     }
     &-icon {
-        display: none;
+        display:    inline-block;
+        box-sizing: border-box;
+        margin:     10px 0 10px 15px;
+        // override font-size of `fa` class
+        font-size:  20px !important;
     }
     &-meta {
         display:        table-cell;
         vertical-align: top;
         box-sizing:     border-box;
         width:          100%;
-        padding:        15px;
+        padding:        10px 20px;
     }
     &-close-button-container {
         display:    table-cell;
@@ -171,7 +208,7 @@
     &-close-button {
         font-size:   21px;
         font-weight: bold;
-        text-shadow: #fff 0 1px 0;
+        text-shadow: #ffffff 0 1px 0;
         opacity:     0.2;
         cursor:      pointer;
 
@@ -230,15 +267,23 @@
         @include notification-variant($notification-default-bg, $notification-default-border, $notification-default-color);
     }
     &--success {
-        @include notification-variant($notification-success-bg, $notification-success-border, $notification-success-color);
+        @include notification-variant($notification-success-bg, $notification-success-border, $notification-success-color, $notification-success-icon);
     }
     &--info {
-        @include notification-variant($notification-info-bg, $notification-info-border, $notification-info-color);
+        @include notification-variant($notification-info-bg, $notification-info-border, $notification-info-color, $notification-info-icon);
     }
     &--warning {
-        @include notification-variant($notification-warning-bg, $notification-warning-border, $notification-warning-color);
+        @include notification-variant($notification-warning-bg, $notification-warning-border, $notification-warning-color, $notification-warning-icon);
     }
     &--error {
-        @include notification-variant($notification-error-bg, $notification-error-border, $notification-error-color);
+        @include notification-variant($notification-error-bg, $notification-error-border, $notification-error-color, $notification-error-icon);
+    }
+    &--loading {
+        // infinite rotating animation
+        .notification-icon {
+            -webkit-animation: rotating 2s infinite linear;
+            animation:         rotating 2s infinite linear;
+        }
+        @include notification-variant($notification-loading-bg, $notification-loading-border, $notification-loading-color, $notification-loading-icon);
     }
 }

@@ -1,6 +1,6 @@
 'use strict';
 
-var css = require('./lib/styles.css');
+var css = require('./lib/style.css');
 
 // media breakpoint - small screen min width
 var smallScreenMin = 768;
@@ -18,33 +18,29 @@ var notificationsContainerClassName = {
 
 // default transition for Notification component
 var notificationsContainerTransition = {
-  appearTimeout: 500,
   enterTimeout: 500,
-  leaveTimeout: 500,
+  leaveTimeout: 900,
   name: {
-    appear: css['notification-appear'],
-    appearActive: css['notification-appear-active'],
-    enter: css['notification-enter'],
-    enterActive: css['notification-enter-active'],
-    leave: css['notification-leave'],
-    leaveActive: css['notification-leave-active']
+    enter: css['notification-wrapper-enter'],
+    leave: css['notification-wrapper-leave']
   }
 };
 
 // default className for Notification component
 var notificationClassName = {
-  main: 'alert ' + css['notification'],
+  main: css['notification'],
+  wrapper: css['notification-wrapper'],
   meta: css['notification-meta'],
   title: css['notification-title'],
   message: css['notification-message'],
-  icon: css['notification-icon'],
+  // `fa` corresponds to font-awesome's class name
+  icon: 'fa ' + css['notification-icon'],
   imageContainer: css['notification-image-container'],
   image: css['notification-image'],
   status: function status(_status) {
     return css['notification--' + _status];
   },
   dismissible: css['notification--dismissible'],
-  // `fa` corresponds to font-awesome's class name
   buttons: function buttons(count) {
     if (count === 0) {
       return '';
@@ -56,7 +52,7 @@ var notificationClassName = {
     return css['notification-buttons'];
   },
   closeButtonContainer: css['notification-close-button-container'],
-  closeButton: css['notification-close-button'],
+  closeButton: 'fa ' + css['notification-close-button'],
   button: css['notification-button'],
   buttonText: css['notification-button-text']
 };

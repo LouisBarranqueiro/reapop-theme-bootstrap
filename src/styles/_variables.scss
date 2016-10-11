@@ -3,6 +3,8 @@ $screen-sm-min: 768px;
 $screen-md-min: 992px;
 $screen-xs-max: ($screen-sm-min - 1);
 
+$window-padding: 20px;
+
 // Notification variables
 $notification-max-width: 360px;
 $notification-button-width: 90px;
@@ -11,6 +13,7 @@ $notification-close-button: "\D7";
 $notification-success-bg: #dff0d8;
 $notification-success-border: #d6e9c6;
 $notification-success-color: #3c763d;
+$notification-success-icon: "\f058";
 
 $notification-default-bg: #f9f9f9;
 $notification-default-border: #eeeeee;
@@ -19,11 +22,19 @@ $notification-default-color: #333333;
 $notification-info-bg: #d9edf7;
 $notification-info-border: #bce8f1;
 $notification-info-color: #31708f;
+$notification-info-icon: "\f05a";
 
 $notification-warning-bg: #fcf8e3;
 $notification-warning-border: #faebcc;
 $notification-warning-color: #8a6d3b;
+$notification-warning-icon: "\f071";
 
 $notification-error-bg: #f2dede;
 $notification-error-border: #ebccd1;
 $notification-error-color: #a94442;
+$notification-error-icon: "\f057";
+
+$notification-loading-bg: #d9edf7;
+$notification-loading-border: #bce8f1;
+$notification-loading-color: #31708f;
+$notification-loading-icon: "\f110";
