@@ -29,7 +29,9 @@
   },
   "homepage": "https://github.com/LouisBarranqueiro/reapop-theme-bootstrap#readme",
   "peerDependencies": {
-    "bootstrap": "3.x.x"
+    "bootstrap": "3.x.x",
+    "font-awesome": "^4.6.1",
+    "reapop": "0.6.x"
   },
   "devDependencies": {
     "node-sass": "^3.10.1"

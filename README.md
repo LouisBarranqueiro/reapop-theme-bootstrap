@@ -6,9 +6,9 @@ Bootstrap theme for [Reapop](https://github.com/LouisBarranqueiro/reapop)
 
 ## Compatibility
 
-Tested and works with :
+Tested and works with **Reapop v0.6.0** in :
 
-![Supported browsers](https://reapop-theme-bootstrap.s3.eu-central-1.amazonaws.com/supported-browsers.jpg)
+![Supported browsers](https://reapop-theme-wybo.s3.eu-central-1.amazonaws.com/supported-browsers.jpg)
 
 ## Installation
 
@@ -37,7 +37,7 @@ var CSSLoader = [
   'css?sourceMap&-minimize',
   'modules',
   'importLoaders=1',
-  'localIndentName=[name]__[local]__[hash:base64:5]'
+  'localIdentName=[name]__[local]__[hash:base64:5]'
 ].join('&');
 
 module.exports = {
