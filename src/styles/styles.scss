@@ -43,6 +43,7 @@
     &--br,
     &--bl {
         width: $notification-max-width;
+
         .notification {
             &--buttons-1 .notification-button {
                 height: 100%;
@@ -51,11 +52,11 @@
                 height: 50%;
             }
             &-buttons {
-                width: $notification-button-width;
+                flex-direction: column;
 
                 .notification-button {
                     display: block;
-                    width:   $notification-button-width;
+                    width:   100%;
 
                     &:nth-child(2) {
                         border-top: 1px solid rgba(0, 0, 0, 0.09);
@@ -67,24 +68,10 @@
     &--b,
     &--t {
         .notification {
+            &-buttons,
             &--buttons-1 {
                 .notification-buttons {
-                    width: $notification-button-width;
-                }
-            }
-            &--buttons-2 {
-                .notification-meta {
-                    width: calc(100% - #{$notification-button-width} * 2)
-                }
-                .notification-buttons {
-                    width: calc(#{$notification-button-width} * 2);
-                }
-            }
-            &-buttons {
-                .notification-button {
-                    float:  left;
-                    width:  $notification-button-width;
-                    height: 100%;
+                    flex-direction: row;
                 }
             }
         }
@@ -156,7 +143,7 @@
 
 // Notification component
 :local .notification {
-    display:    table;
+    display:    flex;
     width:      100%;
     height:     100%;
     min-height: 40px;
@@ -173,13 +160,11 @@
         margin-bottom: $window-padding;
     }
     &-image-container {
-        display:    table-cell;
         box-sizing: border-box;
         padding:    15px 0 15px 15px;
     }
     &-image {
         display:         inline-block;
-        vertical-align:  top;
         border-radius:   40px;
         width:           40px;
         height:          40px;
@@ -191,16 +176,15 @@
         margin:     10px 0 10px 15px;
         // override font-size of `fa` class
         font-size:  20px !important;
+        align-self: flex-start;
     }
     &-meta {
-        display:        table-cell;
         vertical-align: top;
         box-sizing:     border-box;
         width:          100%;
         padding:        10px 20px;
     }
     &-close-button-container {
-        display:    table-cell;
         // Ajust close button position
         padding:    9px 15px;
         box-sizing: border-box;
@@ -222,25 +206,28 @@
 
     // global style for buttons
     &-buttons {
-        display:        table-cell;
+        display:        flex;
         box-sizing:     border-box;
-        height:         100%;
         vertical-align: top;
 
         .notification-button {
-            min-height: 40px;
-            box-sizing: border-box;
-            padding:    0;
-            background: none;
-            outline:    none;
-            text-align: center;
-            cursor:     pointer;
+            min-height:    40px;
+            box-sizing:    border-box;
+            padding:       0;
+            // Otherwise Opera browser add a small radius on these buttons by default
+            border-radius: 0;
+            background:    none;
+            outline:       none;
+            text-align:    center;
+            cursor:        pointer;
 
             &-text {
                 display:       block;
                 height:        25px;
-                // width of a button with 10px of padding
-                width:         70px;
+                min-width:     $notification-button-min-width;
+                max-width:     $notification-button-max-width;
+                width:         auto;
+                padding:       0 15px;
                 white-space:   nowrap;
                 overflow:      hidden;
                 margin:        0 auto;

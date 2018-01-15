@@ -7,7 +7,8 @@ $window-padding: 20px;
 
 // Notification variables
 $notification-max-width: 360px;
-$notification-button-width: 90px;
+$notification-button-min-width: 90px;
+$notification-button-max-width: 150px;
 $notification-close-button: "\D7";
 
 $notification-success-bg: #dff0d8;
