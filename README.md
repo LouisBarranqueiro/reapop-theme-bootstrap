@@ -2,7 +2,7 @@
 
 [![npm version](https://img.shields.io/npm/v/reapop-theme-bootstrap.svg?style=flat-square)](https://www.npmjs.com/package/reapop-theme-bootstrap) [![npm dependencies](https://img.shields.io/david/LouisBarranqueiro/reapop-theme-bootstrap.svg?style=flat-square)](https://www.npmjs.com/package/reapop-theme-bootstrap) [![npm download/month](https://img.shields.io/npm/dm/reapop-theme-bootstrap.svg?style=flat-square)](https://www.npmjs.com/package/reapop-theme-bootstrap) [![gitter chat](https://img.shields.io/gitter/room/LouisBarranqueiro/reapop-theme-bootstrap.svg?style=flat-square)](https://gitter.im/LouisBarranqueiro/reapop-theme-bootstrap)
 
-Bootstrap theme for [Reapop](https://github.com/LouisBarranqueiro/reapop) 
+Bootstrap theme for [Reapop](https://github.com/LouisBarranqueiro/reapop)
 
 ## Compatibility
 
@@ -75,7 +75,7 @@ import '!style-loader!css-loader!font-awesome/css/font-awesome.min.css';
 #### With BootstrapCDN
 
 Add these lines in `<head>` of your main `index.html` file :
-``` html 
+``` html
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 ```
@@ -92,7 +92,7 @@ import '!style-loader!css-loader!font-awesome/css/font-awesome.min.css';
 import theme from 'reapop-theme-bootstrap';
 
 class ATopLevelComponent extends Component {
-  render() { 
+  render() {
    // 3. set `theme` prop
     return (
       <div>
@@ -107,6 +107,6 @@ class ATopLevelComponent extends Component {
 
 Follow this guide : [Reapop - Customize or create a theme](https://github.com/LouisBarranqueiro/reapop/blob/master/docs/api.md#customize-or-create-a-theme)
 
-## License 
+## License
 
-Reapop-theme-bootstrap is under [GPL-3.0 License](https://github.com/LouisBarranqueiro/reapop-theme-bootstrap/blob/master/LICENSE)
+Reapop-theme-bootstrap is under [MIT License](https://github.com/LouisBarranqueiro/reapop-theme-bootstrap/blob/master/LICENSE)
