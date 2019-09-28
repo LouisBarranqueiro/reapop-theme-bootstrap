@@ -29,7 +29,7 @@
   },
   "homepage": "https://github.com/LouisBarranqueiro/reapop-theme-bootstrap#readme",
   "peerDependencies": {
-    "bootstrap": "3.x.x",
+    "bootstrap": "3.x.x || 4.x",
     "font-awesome": "^4.6.1",
     "reapop": ">=0.6.0"
   },
