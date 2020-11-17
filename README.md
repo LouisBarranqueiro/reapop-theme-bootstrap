@@ -1,5 +1,7 @@
 # reapop-theme-bootstrap
 
+## :warning: This package is deprecated because this theme is now directly included in the lastest version of [reapop](https://github.com/LouisBarranqueiro/reapop) package. 
+ 
 [![npm version](https://img.shields.io/npm/v/reapop-theme-bootstrap.svg?style=flat-square)](https://www.npmjs.com/package/reapop-theme-bootstrap) [![npm dependencies](https://img.shields.io/david/LouisBarranqueiro/reapop-theme-bootstrap.svg?style=flat-square)](https://www.npmjs.com/package/reapop-theme-bootstrap) [![npm download/month](https://img.shields.io/npm/dm/reapop-theme-bootstrap.svg?style=flat-square)](https://www.npmjs.com/package/reapop-theme-bootstrap) [![gitter chat](https://img.shields.io/gitter/room/LouisBarranqueiro/reapop-theme-bootstrap.svg?style=flat-square)](https://gitter.im/LouisBarranqueiro/reapop-theme-bootstrap)
 
 Bootstrap theme for [Reapop](https://github.com/LouisBarranqueiro/reapop)
